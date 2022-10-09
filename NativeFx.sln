@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NativeFx", "NativeFx\NativeFx.csproj", "{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{62C266AB-EE58-47CD-AA74-3372F14560AF}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		TODO.txt = TODO.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24DFFFDE-4374-4FFA-B158-DEE13B38DB6E}
+	EndGlobalSection
+EndGlobal
