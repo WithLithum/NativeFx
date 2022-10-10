@@ -7,8 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NativeFx", "NativeFx\Native
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{62C266AB-EE58-47CD-AA74-3372F14560AF}"
 	ProjectSection(SolutionItems) = preProject
+		LICENCE.txt = LICENCE.txt
 		README.md = README.md
-		TODO.txt = TODO.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{81261EA3-6273-4239-8CC1-D8353A84ADCA}"
+	ProjectSection(SolutionItems) = preProject
+		NativeFx.sln.vsspell = NativeFx.sln.vsspell
 	EndProjectSection
 EndProject
 Global

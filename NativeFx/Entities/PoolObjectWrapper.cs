@@ -1,37 +1,27 @@
 ﻿namespace NativeFx.Entities;
 
 using GTA;
-using GTA.Native;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-public abstract class PoolObjectWrapper<T> : INativeValue
+/// <summary>
+/// Represents a wrapper object that wraps a <see cref="PoolObject"/>.
+/// </summary>
+/// <typeparam name="T">The type of the object to wrap.</typeparam>
+public abstract class PoolObjectWrapper<T> : IHandleable
     where T : PoolObject
 {
     protected readonly T x;
 
+    /// <summary>
+    /// Initialises a new instance of the <see cref="PoolObjectWrapper{T}"/> class.
+    /// </summary>
+    /// <param name="x">The object to wrap.</param>
     protected PoolObjectWrapper(T x)
     {
         this.x = x;
     }
 
-    /// <summary>
-    /// Gets or sets the native value of this instance.
-    /// </summary>
-    [Obsolete("Should not be used. This property exists purely for convince of the native engine.")]
-    public ulong NativeValue
-    {
-        get => x.NativeValue;
-        set => x.NativeValue = value;
-    }
+    public int Handle => x.Handle;
 
-    /// <summary>
-    /// Determines whether this instance still exists in the game world.
-    /// </summary>
-    /// <returns><see langword="true"/> if this instance exists; otherwise, <see langword="false"/>.</returns>
     public bool IsValid()
     {
         return x?.Exists() == true;

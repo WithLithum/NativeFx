@@ -12,16 +12,20 @@ using System.Threading.Tasks;
 
 public class XPed : XEntityWrapper<Ped>
 {
-    public XPed(Ped bas) : base(bas)
+    /// <summary>
+    /// Initialises a new instance of the <see cref="XPed"></see> class.
+    /// </summary>
+    /// <param name="x">The class to wrap.</param>
+    public XPed(Ped x) : base(x)
     {
     }
 
     /// <summary>
-    /// Gets or sets a value indicating whether the flashlight on the weapon of this instance is
+    /// Gets or sets a value indicating whether the torch on the weapon of this instance is
     /// currently activated.
     /// </summary>
     /// <value>
-    /// <see langword="true"/> if the flashlight on the current weapon is on; otherwise, <see langword="false"/>.
+    /// <see langword="true"/> if the torch on the current weapon is on; otherwise, <see langword="false"/>.
     /// </value>
     /// <remarks>
     /// Setting the value requires game version <c>2060</c> or later. 
@@ -31,6 +35,16 @@ public class XPed : XEntityWrapper<Ped>
         get => Function.Call<bool>(Hash.IS_FLASH_LIGHT_ON, x.Handle);
         set => Function.Call(Hash._SET_FLASH_LIGHT_ENABLED, x.Handle, value);
     }
+
+    /// <summary>
+    /// Gets a value indicating whether this instance is currently fleeing.
+    /// </summary>
+    public bool IsFleeing => x.IsFleeing;
+
+    /// <summary>
+    /// Gets a value indicating whether this instance is currently falling.
+    /// </summary>
+    public bool IsFalling => x.IsFalling;
 
     /// <summary>
     /// Gets a value indicating whether this instance has ambient speech disabled.
@@ -53,6 +67,21 @@ public class XPed : XEntityWrapper<Ped>
         return Natives.CanPedSpeak(x.Handle, speech, false);
     }
 
+    /// <summary>
+    /// Determines whether this instance is facing towards the specified instance.
+    /// </summary>
+    /// <param name="other">The other instance to check.</param>
+    /// <param name="coneAngle">The angle of the view cone of this instance.</param>
+    /// <returns><see langword="true"/> if this instance currently facing towards the specified instance; otherwise, <see langword="false"/>.</returns>
+    public bool IsFacing(XPed other, float coneAngle)
+    {
+        return Natives.IsPedFacingPed(x.Handle, other.x.Handle, coneAngle);
+    }
+
+    /// <summary>
+    /// Sets whether to show the vision cone for the ambient blip of this instance.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, a vision cone is shown.</param>
     public void ShowConeForAmbientBlip(bool toggle)
     {
         Natives.SetPedAiBlipHasCone(x.Handle, toggle);

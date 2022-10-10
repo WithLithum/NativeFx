@@ -39,6 +39,15 @@ public class XVehicle : XEntityWrapper<Vehicle>
     public void PlaceOnGround() => x.PlaceOnGround();
 
     /// <summary>
+    /// Sets whether this instance can be used by fleeing actors.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, fleeing actors will use this vehicle.</param>
+    public void CanBeUsedByFleeingPeds(bool toggle)
+    {
+        Natives.SetVehicleCanBeUsedByFleeingPeds(x.Handle, toggle);
+    }
+
+    /// <summary>
     /// Toggles whether to play a stall warning at this instance.
     /// </summary>
     /// <param name="toggle">If <see langword="true"/>, plays stall warning.</param>

@@ -14,6 +14,11 @@ internal static partial class Natives
         Function.Call(Hash.SET_PED_COMPONENT_VARIATION, ped, componentId, drawableId, textureId, paletteId);
     }
 
+    internal static bool IsPedFacingPed(int /* Ped */ ped, int /* Ped */ otherPed, float angle)
+    {
+        return Function.Call<bool>(Hash.IS_PED_FACING_PED, ped, otherPed, angle);
+    }
+
     internal static bool CanPedSpeak(int /* Ped */ ped, string speechName, bool unk)
     {
         return Function.Call<bool>(Hash._CAN_PED_SPEAK, ped, speechName, unk);
