@@ -68,6 +68,11 @@ public static class XGame
     }
 
     /// <summary>
+    /// Gets a value indicating whether there is a cutscene that is currently being played.
+    /// </summary>
+    public static bool IsCutscenePlaying => Natives.IsCutscenePlaying();
+
+    /// <summary>
     /// Toggles whether to substitute the word <c>Waypoint</c> with the word <c>Destination</c> on the map
     /// legend of way-points.
     /// </summary>
@@ -85,5 +90,31 @@ public static class XGame
     public static void PlayDistantSirens(bool toggle)
     {
         Function.Call(Hash.DISTANT_COP_CAR_SIRENS, toggle);
+    }
+
+    /// <summary>
+    /// Determines whether this client is the host of this script.
+    /// </summary>
+    /// <returns><see langword="true"/> if this instance is the host of the current script.</returns>
+    public static bool IsHostOfThisScript()
+    {
+        return Natives.NetworkIsHostOfThisScript();
+    }
+
+    /// <summary>
+    /// Toggles whether to disable automatic re-spawn after the player is busted or wasted.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, automatic re-spawn is disabled.</param>
+    public static void DisableAutomaticRespawn(bool toggle)
+    {
+        Natives.PauseDeathArrestRestart(toggle);
+    }
+
+    /// <summary>
+    /// Removes the current cutscene.
+    /// </summary>
+    public static void RemoveCutscene()
+    {
+        Natives.RemoveCutscene();
     }
 }

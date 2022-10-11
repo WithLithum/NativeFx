@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Provides a wrapper for <see cref="Ped"/> that provides extra API access.
+/// </summary>
 public class XPed : XEntityWrapper<Ped>
 {
     /// <summary>
@@ -58,6 +61,19 @@ public class XPed : XEntityWrapper<Ped>
     }
 
     /// <summary>
+    /// Gets a value indicating whether this instance is considered injured by the game engine.
+    /// </summary>
+    /// <remarks>
+    /// Game considers an instance "injured" if their health falls below a specified threshold, the threshold
+    /// is, by default, <c>100</c>. However, normally an instance with a health below that point would automatically
+    /// die.
+    /// </remarks>
+    public bool IsInjured
+    {
+        get => Natives.IsPedInjured(Handle);
+    }
+
+    /// <summary>
     /// Determines whether this instance can speak the specified speech.
     /// </summary>
     /// <param name="speech">The speech to check.</param>
@@ -97,6 +113,15 @@ public class XPed : XEntityWrapper<Ped>
     }
 
     /// <summary>
+    /// Sets the response of this instance after this instance has or had lost its target in combat.
+    /// </summary>
+    /// <param name="response">The response to set to.</param>
+    public void SetTargetLostResponse(PedTargetLossResponse response)
+    {
+        Natives.SetPedTargetLossResponse(Handle, (int)response);
+    }
+
+    /// <summary>
     /// Dismisses this instance without clearing the tasks.
     /// </summary>
     public void DismissNoClearTask()
@@ -104,6 +129,12 @@ public class XPed : XEntityWrapper<Ped>
         x.SetIsPersistentNoClearTask(false);
     }
 
+    /// <summary>
+    /// Determines whether the specified component variation is valid for this instance.
+    /// </summary>
+    /// <param name="slot">The slot.</param>
+    /// <param name="drawable">The drawable.</param>
+    /// <param name="texture">The texture.</param>
     public void IsVariationValid(PedVariationSlot slot, int drawable, int texture)
     {
         Natives.IsPedComponentVariationValid(x.Handle, (int)slot, drawable, texture);
@@ -122,6 +153,39 @@ public class XPed : XEntityWrapper<Ped>
     }
 
     /// <summary>
+    /// Sets the seeing range of this instance.
+    /// </summary>
+    /// <param name="range">The seeing range to set to.</param>
+    public void SetSeeingRange(float range)
+    {
+        Natives.SetPedSeeingRange(Handle, range);
+    }
+
+    /// <summary>
+    /// Sets the option of how this instance can and the difficulty of being knocked off vehicles.
+    /// </summary>
+    /// <example>
+    /// This is an example found in <c>am_mc_rc_vehicle</c> native script:
+    /// <code language="cs">
+    /// Game.Player.SetKnockOffVehicleOption(PedKnockOffVehicleOption.Default);
+    /// </code>
+    /// </example>
+    /// <param name="option">The option.</param>
+    public void SetKnockOffVehicleOption(PedKnockOffVehicleOption option)
+    {
+        Natives.SetPedCanBeKnockedOffVehicle(Handle, (int)option);
+    }
+
+    /// <summary>
+    /// Sets the hearing range of this instance.
+    /// </summary>
+    /// <param name="range">The hearing range to set to.</param>
+    public void SetHearingRange(float range)
+    {
+        Natives.SetPedHearingRange(Handle, range);
+    }
+
+    /// <summary>
     /// Stops the currently playing ringtone of this instance.
     /// </summary>
     public void StopRingtone()
@@ -137,6 +201,15 @@ public class XPed : XEntityWrapper<Ped>
     public bool IsInAnyTaxi()
     {
         return Natives.IsPedInAnyTaxi(x.Handle);
+    }
+
+    /// <summary>
+    /// Determines whether this instance is in any vehicle that is determined as "flying" by the game engine.
+    /// </summary>
+    /// <returns><see langword="true"/> if this instance is in any flying vehicle; otherwise, <see langword="false"/>.</returns>
+    public bool IsInAnyFlyingVehicle()
+    {
+        return Natives.IsPedInFlyingVehicle(Handle);
     }
 
     /// <summary>

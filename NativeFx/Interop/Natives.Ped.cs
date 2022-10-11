@@ -14,9 +14,39 @@ internal static partial class Natives
         Function.Call(Hash.SET_PED_COMPONENT_VARIATION, ped, componentId, drawableId, textureId, paletteId);
     }
 
+    internal static void SetPedSeeingRange(int ped, float range)
+    {
+        Function.Call(Hash.SET_PED_SEEING_RANGE, ped, range);
+    }
+
+    internal static void SetPedCanBeKnockedOffVehicle(int /* Ped */ ped, int state)
+    {
+        Function.Call(Hash.SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE, ped, state);
+    }
+
+    internal static void SetPedHearingRange(int ped, float range)
+    {
+        Function.Call(Hash.SET_PED_HEARING_RANGE, ped, range);
+    }
+
+    internal static bool IsPedInjured(int ped)
+    {
+        return Function.Call<bool>(Hash.IS_PED_INJURED, ped);
+    }
+
+    internal static void SetPedTargetLossResponse(int ped, int responseType)
+    {
+        Function.Call(Hash.SET_PED_TARGET_LOSS_RESPONSE, ped, responseType);
+    }
+
     internal static bool IsPedFacingPed(int /* Ped */ ped, int /* Ped */ otherPed, float angle)
     {
         return Function.Call<bool>(Hash.IS_PED_FACING_PED, ped, otherPed, angle);
+    }
+
+    internal static bool IsPedInFlyingVehicle(int ped)
+    {
+        return Function.Call<bool>(Hash.IS_PED_IN_FLYING_VEHICLE, ped);
     }
 
     internal static bool CanPedSpeak(int /* Ped */ ped, string speechName, bool unk)

@@ -82,6 +82,20 @@ public static class XWorld
         Natives.SetArtificialLightsStateAffectsVehicles(affectVehicles);
     }
 
+    public static bool TryGetGroundLevel(Vector3 vector, out float result, bool ignoreWater = true)
+    {
+        bool success;
+        float x = 0f;
+
+        unsafe
+        {
+            success = Natives.GetGroundZFor_3dCoord(vector.X, vector.Y, vector.Z, ref x, ignoreWater);
+        }
+
+        result = x;
+        return success;
+    }
+
     /// <summary>
     /// Summons a lightning flash at a random position.
     /// </summary>
