@@ -119,6 +119,11 @@ public static class XWorld
         Natives.ModifyWater(centre.X, centre.Y, height, radius);
     }
 
+    public static void SetSnowLevel(float level)
+    {
+        Natives.SetSnowLevel(level);
+    }
+
     /// <summary>
     /// Overrides the water strength/intensity around the local player.
     /// </summary>
