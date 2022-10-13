@@ -1,8 +1,7 @@
 # NativeFx
 
 An expansion library for Script Hook V .NET that adds various classes and
-wrappers to assist with programming. This library aims to expose most natives
-documented and available for use in its API.
+wrappers to assist with programming for GTA V.
 
 ## Licence
 
