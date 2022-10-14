@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// An enumeration of all variation slots.
+/// </summary>
 public enum PedVariationSlot
 {
     /// <summary>

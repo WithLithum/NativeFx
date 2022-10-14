@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Represents an entity that can be persistent.
+/// </summary>
 public interface IPersistable
 {
     /// <summary>

@@ -19,6 +19,11 @@ internal static partial class Natives
         Function.Call(Hash._SET_SNOW_LEVEL, level);
     }
 
+    internal static void PopulateNow()
+    {
+        Function.Call(Hash.POPULATE_NOW);
+    }
+
     internal static unsafe bool GetGroundZFor_3dCoord(float x, float y, float z, ref float groundZ, bool ignoreWater)
     {
         var xz = groundZ;

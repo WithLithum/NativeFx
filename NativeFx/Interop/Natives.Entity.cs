@@ -24,6 +24,11 @@ internal static partial class Natives
         Function.Call(Hash.SET_ENTITY_MAX_HEALTH, entity, value);
     }
 
+    internal static bool IsEntityAttachedToAnyVehicle(int /* Entity */ entity)
+    {
+        return Function.Call<bool>(Hash.IS_ENTITY_ATTACHED_TO_ANY_VEHICLE, entity);
+    }
+
     internal static bool IsEntityInWater(int /* Entity */ entity)
     {
         return Function.Call<bool>(Hash.IS_ENTITY_IN_WATER, entity);

@@ -23,4 +23,9 @@ internal static partial class Natives
     {
         return Function.Call<bool>(Hash.IS_AMBIENT_SPEECH_DISABLED, ped);
     }
+
+    internal static bool IsHornActive(int /* Vehicle */ vehicle)
+    {
+        return Function.Call<bool>(Hash.IS_HORN_ACTIVE, vehicle);
+    }
 }

@@ -16,6 +16,10 @@ using System.Threading.Tasks;
 public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPersistable, IFreezable, ISpatial
     where T : Entity
 {
+    /// <summary>
+    /// Initialises a new instance of the <see cref="XEntityWrapper{T}"/> class.
+    /// </summary>
+    /// <param name="x">The entity to wrap.</param>
     protected XEntityWrapper(T x) : base(x)
     {
     }
@@ -52,6 +56,7 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
         set => Natives.SetEntityMaxHealth(x.Handle, value);
     }
 
+    /// <inheritdoc />
     public bool IsPersistent
     {
         get => x.IsPersistent;
@@ -72,37 +77,68 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
         set => Natives.SetEntityHasGravity(x.Handle, value);
     }
 
+    /// <summary>
+    /// Gets a value indicating whether this instance has a drawable model.
+    /// </summary>
     public bool HasDrawable => Natives.DoesEntityHaveDrawable(x.Handle);
 
+    /// <summary>
+    /// Gets a value indicating whether this instance has physics.
+    /// </summary>
     public bool HasPhysics => Natives.DoesEntityHavePhysics(x.Handle);
 
+    /// <summary>
+    /// Gets or sets the position of this instance.
+    /// </summary>
     public Vector3 Position
     {
         get => x.Position;
         set => x.Position = value;
     }
+
+    /// <summary>
+    /// Gets or sets the rotation of this instance.
+    /// </summary>
     public Vector3 Rotation
     {
         get => x.Rotation;
         set => x.Rotation = value;
     }
 
+    /// <summary>
+    /// Gets or sets the heading of this instance.
+    /// </summary>
     public float Heading
     {
         get => Natives.GetEntityHeading(Handle);
         set => Natives.SetEntityHeading(Handle, value);
     }
 
+    /// <inheritdoc />
     public void Delete()
     {
         x.Delete();
     }
 
+    /// <inheritdoc />
     public void Dismiss()
     {
         x.MarkAsNoLongerNeeded();
     }
 
+    /// <summary>
+    /// Determines whether this instance is attached to any vehicle.
+    /// </summary>
+    /// <returns><see langword="true"/> if this instance is attached to any vehicle.</returns>
+    public bool IsAttachedToAnyVehicle()
+    {
+        return Natives.IsEntityAttachedToAnyVehicle(Handle);
+    }
+
+    /// <summary>
+    /// Freezes this instance.
+    /// </summary>
+    /// <param name="freeze">If <see langword="true"/>, this instance is frozen.</param>
     public void Freeze(bool freeze)
     {
         Natives.FreezeEntityPosition(Handle, freeze);

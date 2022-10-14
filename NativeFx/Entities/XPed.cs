@@ -141,6 +141,19 @@ public class XPed : XEntityWrapper<Ped>
     }
 
     /// <summary>
+    /// Determines whether this instance is currently <b>on</b> any vehicle.
+    /// </summary>
+    /// <remarks>
+    /// This method determines whether this instance is currently <b>physically on</b> (e.g. when standing on it)
+    /// a vehicle instead of <b>sitting in</b> a vehicle.
+    /// </remarks>
+    /// <returns><see langword="true"/> if this instance is currently on any vehicle.</returns>
+    public bool IsOnAnyVehicle()
+    {
+        return Natives.IsPedOnVehicle(Handle);
+    }
+
+    /// <summary>
     /// Sets the component variation at the specified <paramref name="slot"/> to the specified <paramref name="drawable"/> and
     /// <paramref name="texture"/>.
     /// </summary>
@@ -153,12 +166,31 @@ public class XPed : XEntityWrapper<Ped>
     }
 
     /// <summary>
+    /// Teleports this instance into the specified vehicle.
+    /// </summary>
+    /// <param name="vehicle">The vehicle to teleport into.</param>
+    /// <param name="seat">The seat.</param>
+    public void WrapIntoVehicle(XVehicle vehicle, VehicleSeat seat)
+    {
+        Natives.SetPedIntoVehicle(Handle, vehicle.Handle, (int)seat);
+    }
+
+    /// <summary>
     /// Sets the seeing range of this instance.
     /// </summary>
     /// <param name="range">The seeing range to set to.</param>
     public void SetSeeingRange(float range)
     {
         Natives.SetPedSeeingRange(Handle, range);
+    }
+
+    /// <summary>
+    /// Toggles whether this instance is highly perceptive.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, this instance is highly perceptive.</param>
+    public void SetHighlyPerceptive(bool toggle)
+    {
+        Natives.SetPedHighlyPerceptive(Handle, toggle);
     }
 
     /// <summary>

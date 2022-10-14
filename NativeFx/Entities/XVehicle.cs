@@ -31,6 +31,14 @@ public class XVehicle : XEntityWrapper<Vehicle>
     }
 
     /// <summary>
+    /// Gets a value indicating whether the horn of this instance is currently active.
+    /// </summary>
+    public bool IsHornActive
+    {
+        get => Natives.IsHornActive(Handle);
+    }
+
+    /// <summary>
     /// Gets or sets the amount of bombs carried on this instance.
     /// </summary>
     /// <remarks>
@@ -49,12 +57,30 @@ public class XVehicle : XEntityWrapper<Vehicle>
     }
 
     /// <summary>
+    /// Forces this instance to stop after the specified period.
+    /// </summary>
+    /// <param name="distance">The distance that this vehicle allowed to travel before brought to stop.</param>
+    /// <param name="duration">The time takes to bring this instance to stop.</param>
+    public void BringToHalt(float distance, int duration) => Natives.BringVehicleToHalt(Handle, distance, duration, false);
+
+    /// <summary>
     /// Attempts to teleport this instance to the ground level properly on all wheels.
     /// </summary>
     /// <remarks>
     /// As this method <b>only attempts</b>, it returns whether it is successful.
-    /// </remarks>
+    /// </remarks>s
     public void PlaceOnGround() => x.PlaceOnGround();
+
+    /// <summary>
+    /// Gets the maximum acceleration value of this instance.
+    /// </summary>
+    public float MaxAcceleration => Natives.GetVehicleAcceleration(Handle);
+
+    public bool IsRadioLoud
+    {
+        get => Natives.IsVehicleRadioLoud(Handle);
+        set => Natives.SetVehicleRadioLoud(Handle, value);
+    }
 
     /// <summary>
     /// Sets whether this instance can be used by fleeing actors.

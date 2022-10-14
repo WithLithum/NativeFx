@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Represents an object that can be frozen.
+/// </summary>
 public interface IFreezable
 {
     /// <summary>

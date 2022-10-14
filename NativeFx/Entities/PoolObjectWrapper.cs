@@ -9,6 +9,9 @@ using GTA;
 public abstract class PoolObjectWrapper<T> : IHandleable
     where T : PoolObject
 {
+    /// <summary>
+    /// The base object of this instance.
+    /// </summary>
     protected readonly T x;
 
     /// <summary>
@@ -20,8 +23,10 @@ public abstract class PoolObjectWrapper<T> : IHandleable
         this.x = x;
     }
 
+    /// <inheritdoc />
     public int Handle => x.Handle;
 
+    /// <inheritdoc />
     public bool IsValid()
     {
         return x?.Exists() == true;

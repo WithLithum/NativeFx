@@ -109,6 +109,18 @@ public static class XWorld
     }
 
     /// <summary>
+    /// Populates the world immediately.
+    /// </summary>
+    /// <remarks>
+    /// This methods causes the game engine to spawn random NPCs, vehicles and animals in the world
+    /// outside player view, given the case applies.
+    /// </remarks>
+    public static void Populate()
+    {
+        Natives.PopulateNow();
+    }
+
+    /// <summary>
     /// Modifies the height of the water within the specified radius from the specified centre position.
     /// </summary>
     /// <param name="centre">The centre point of the area to modify the water height.</param>

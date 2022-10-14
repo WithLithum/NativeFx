@@ -34,6 +34,11 @@ internal static partial class Natives
         return Function.Call<bool>(Hash.IS_PED_INJURED, ped);
     }
 
+    internal static void SetPedHighlyPerceptive(int /* Ped */ ped, bool toggle)
+    {
+        Function.Call(Hash.SET_PED_HIGHLY_PERCEPTIVE, ped, toggle);
+    }
+
     internal static void SetPedTargetLossResponse(int ped, int responseType)
     {
         Function.Call(Hash.SET_PED_TARGET_LOSS_RESPONSE, ped, responseType);
@@ -47,6 +52,16 @@ internal static partial class Natives
     internal static bool IsPedInFlyingVehicle(int ped)
     {
         return Function.Call<bool>(Hash.IS_PED_IN_FLYING_VEHICLE, ped);
+    }
+
+    internal static bool IsPedOnVehicle(int /* Ped */ ped)
+    {
+        return Function.Call<bool>(Hash.IS_PED_ON_VEHICLE, ped);
+    }
+
+    internal static void SetPedIntoVehicle(int /* Ped */ ped, int /* Vehicle */ vehicle, int seatIndex)
+    {
+        Function.Call(Hash.SET_PED_INTO_VEHICLE, ped, vehicle, seatIndex);
     }
 
     internal static bool CanPedSpeak(int /* Ped */ ped, string speechName, bool unk)

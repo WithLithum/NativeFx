@@ -5,6 +5,18 @@
     <LangVersion>latest</LangVersion>
     <Nullable>warnings</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Title>NativeFx</Title>
+    <Authors>WithLithum</Authors>
+    <Version>0.1.0-alpha</Version>
+    <Description>A library for SHVDN3 that provides additional wrappers to provide a friendly API allowing more native access</Description>
+    <Copyright>Copyright (C) WithLithum 2022.</Copyright>
+    <PackageProjectUrl>https://github.com/WithLithum/NativeFx</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/WithLithum/NativeFx</RepositoryUrl>
+    <PackageTags>shvdn3</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
