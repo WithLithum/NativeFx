@@ -51,6 +51,21 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
         set => Natives.SetEntityMaxHealth(x.Handle, value);
     }
 
+    /// <summary>
+    /// Gets a value indicating whether this instance is dead.
+    /// </summary>
+    public bool IsDead => Natives.IsEntityDead(Handle);
+
+    /// <summary>
+    /// Gets a value indicating whether this instance is alive.
+    /// </summary>
+    public bool IsAlive => !IsDead;
+
+    /// <summary>
+    /// Gets a value indicating whether this instance is on fire.
+    /// </summary>
+    public bool IsOnFire => Natives.IsEntityOnFire(Handle);
+
     /// <inheritdoc />
     public bool IsPersistent
     {
@@ -62,6 +77,15 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
     /// Gets a value indicating whether this instance is in water.
     /// </summary>
     public bool IsInWater => Natives.IsEntityInWater(x.Handle);
+
+    /// <summary>
+    /// Gets a value indicating whether this instance is static.
+    /// </summary>
+    /// <remarks>
+    /// A static instance will not respond to task invoking and manipulation regarding physics
+    /// of static instances are restricted.
+    /// </remarks>
+    public bool IsStatic => Natives.IsEntityStatic(Handle);
 
     /// <summary>
     /// Gets or sets a value indicating whether this instance has gravity.

@@ -24,9 +24,24 @@ internal static partial class Natives
         return Function.Call<bool>(Hash.IS_ENTITY_ATTACHED_TO_ANY_VEHICLE, entity);
     }
 
+    internal static bool IsEntityDead(int /* Entity */ entity)
+    {
+        return Function.Call<bool>(Hash.IS_ENTITY_DEAD, entity);
+    }
+
+    internal static bool IsEntityOnFire(int /* Entity */ entity)
+    {
+        return Function.Call<bool>(Hash.IS_ENTITY_ON_FIRE, entity);
+    }
+
     internal static bool IsEntityInWater(int /* Entity */ entity)
     {
         return Function.Call<bool>(Hash.IS_ENTITY_IN_WATER, entity);
+    }
+
+    internal static bool IsEntityStatic(int /* Entity */ entity)
+    {
+        return Function.Call<bool>(Hash.IS_ENTITY_STATIC, entity);
     }
 
     internal static void FreezeEntityPosition(int /* Entity */ entity, bool freeze)
