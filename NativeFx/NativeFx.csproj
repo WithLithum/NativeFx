@@ -8,15 +8,16 @@
     <Title>NativeFx</Title>
     <Authors>WithLithum</Authors>
     <Version>0.1.0-alpha</Version>
-    <Description>A library for SHVDN3 that provides additional wrappers to provide a friendly API allowing more native access</Description>
+    <Description>A library that provides additional wrappers to provide a friendly API allowing more native access on GTA programming. [for SHVDN3]</Description>
     <Copyright>Copyright (C) WithLithum 2022.</Copyright>
     <PackageProjectUrl>https://github.com/WithLithum/NativeFx</PackageProjectUrl>
     <RepositoryUrl>https://github.com/WithLithum/NativeFx</RepositoryUrl>
-    <PackageTags>shvdn3</PackageTags>
+    <PackageTags>shvdn3;ScriptHookVDotNet3;shvdn;gta</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

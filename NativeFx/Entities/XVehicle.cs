@@ -3,11 +3,6 @@
 using GTA;
 using GTA.Native;
 using NativeFx.Interop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public class XVehicle : XEntityWrapper<Vehicle>
 {

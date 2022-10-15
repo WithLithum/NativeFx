@@ -4,11 +4,6 @@ using GTA;
 using GTA.Native;
 using NativeFx.Entities.Peds;
 using NativeFx.Interop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Provides a wrapper for <see cref="Ped"/> that provides extra API access.

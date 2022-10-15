@@ -1,10 +1,4 @@
 ﻿namespace NativeFx;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 /// <summary>
 /// Represents an object that represents an instance in the game engine via a handle provided
 /// by the game engine.

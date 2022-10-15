@@ -1,11 +1,6 @@
 ﻿namespace NativeFx.UI;
 
 using NativeFx.Interop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Provides methods and properties to manipulate gameplay camera.
