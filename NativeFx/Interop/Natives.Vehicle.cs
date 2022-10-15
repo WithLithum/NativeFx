@@ -31,7 +31,7 @@ internal static partial class Natives
 
     internal static void BringVehicleToHalt(int /* Vehicle */ vehicle, float distance, int duration, bool unknown)
     {
-        return Function.Call(Hash.BRING_VEHICLE_TO_HALT, vehicle, distance, duration, unknown);
+        Function.Call(Hash.BRING_VEHICLE_TO_HALT, vehicle, distance, duration, unknown);
     }
 
     internal static bool IsVehicleRadioLoud(int /* Vehicle */ vehicle)
