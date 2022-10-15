@@ -76,6 +76,6 @@ jobs:
       run: dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/WithLithum/index.json"
       
     - name: Push packge
-      run: dotnet nuget push "*.nupkg" --source "github"
+      run: dotnet nuget push "NativeFx/bin/Release/*.nupkg" --source "github"
     
 
