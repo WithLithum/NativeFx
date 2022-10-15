@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
@@ -7,7 +7,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Title>NativeFx</Title>
     <Authors>WithLithum</Authors>
-    <Version>0.1.0-alpha</Version>
+    <Version>$(VersionPrefix)-$(VersionSuffix)</Version>
     <Description>A library that provides additional wrappers to provide a friendly API allowing more native access on GTA programming. [for SHVDN3]</Description>
     <Copyright>Copyright (C) WithLithum 2022.</Copyright>
     <PackageProjectUrl>https://github.com/WithLithum/NativeFx</PackageProjectUrl>
@@ -18,6 +18,10 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionSuffix>x</VersionSuffix>
+    <FileVersion>$(VersionPrefix)</FileVersion>
+    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
