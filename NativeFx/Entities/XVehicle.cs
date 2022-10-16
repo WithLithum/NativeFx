@@ -71,6 +71,23 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// </summary>
     public float MaxAcceleration => Natives.GetVehicleAcceleration(Handle);
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the engine of this instance is currently
+    /// running.
+    /// </summary>
+    /// <remarks>
+    /// This property instantly turns the engine on or off when set; however, the game provides
+    /// additional features when setting engine on or off, to use these features, use <see cref="SetEngineOn(bool, bool, bool)"/>.
+    /// </remarks>
+    public bool IsEngineOn
+    {
+        get => Natives.GetIsVehicleEngineRunning(Handle);
+        set => Natives.SetVehicleEngineOn(Handle, value, true, false);
+    }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether this instance plays loud radio audio.
+    /// </summary>
     public bool IsRadioLoud
     {
         get => Natives.IsVehicleRadioLoud(Handle);
@@ -118,6 +135,21 @@ public class XVehicle : XEntityWrapper<Vehicle>
         Function.Call(Hash.ENABLE_STALL_WARNING_SOUNDS, x, toggle);
     }
 
+    /// <summary>
+    /// Turns on the engine of this instance.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, the engine is activated; otherwise, <see langword="false"/>.</param>
+    /// <param name="instantly">If <see langword="true"/>, the vehicle will instantly switch on or off instead of the driver switching it physically on or off.</param>
+    /// <param name="disableAutoStart">If <see langword="true"/>, when the player enters the vehicle for the next time, the engine will not automatically turn on.</param>
+    public void SetEngineOn(bool toggle, bool instantly, bool disableAutoStart)
+    {
+        Natives.SetVehicleEngineOn(Handle, toggle, instantly, disableAutoStart);
+    }
+
+    /// <summary>
+    /// Toggles whether the wheels of this instance deals damage to entities when running over those.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, deals damage.</param>
     public void SetWheelsDealDamage(bool toggle)
     {
         Natives.SetVehicleWheelsDealDamage(Handle, toggle);

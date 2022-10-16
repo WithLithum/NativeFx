@@ -29,9 +29,19 @@ internal static partial class Natives
         return Function.Call<float>(Hash.GET_VEHICLE_ACCELERATION, vehicle);
     }
 
+    internal static bool GetIsVehicleEngineRunning(int /* Vehicle */ vehicle)
+    {
+        return Function.Call<bool>(Hash.GET_IS_VEHICLE_ENGINE_RUNNING, vehicle);
+    }
+
     internal static void BringVehicleToHalt(int /* Vehicle */ vehicle, float distance, int duration, bool unknown)
     {
         Function.Call(Hash.BRING_VEHICLE_TO_HALT, vehicle, distance, duration, unknown);
+    }
+
+    internal static void SetVehicleEngineOn(int /* Vehicle */ vehicle, bool value, bool instantly, bool disableAutoStart)
+    {
+        Function.Call(Hash.SET_VEHICLE_ENGINE_ON, vehicle, value, instantly, disableAutoStart);
     }
 
     internal static bool IsVehicleRadioLoud(int /* Vehicle */ vehicle)

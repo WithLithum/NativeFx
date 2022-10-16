@@ -7,7 +7,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Title>NativeFx</Title>
     <Authors>WithLithum</Authors>
-    <Version>$(VersionPrefix)-$(VersionSuffix)</Version>
     <Description>A library that provides additional wrappers to provide a friendly API allowing more native access on GTA programming. [for SHVDN3]</Description>
     <Copyright>Copyright (C) WithLithum 2022.</Copyright>
     <PackageProjectUrl>https://github.com/WithLithum/NativeFx</PackageProjectUrl>
