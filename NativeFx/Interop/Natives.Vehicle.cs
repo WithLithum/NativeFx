@@ -49,6 +49,16 @@ internal static partial class Natives
         return Function.Call<bool>(Hash._IS_VEHICLE_RADIO_LOUD, vehicle);
     }
 
+    internal static bool IsVehicleSirenAudioOn(int /* Vehicle */ vehicle)
+    {
+        return Function.Call<bool>(Hash.IS_VEHICLE_SIREN_AUDIO_ON, vehicle);
+    }
+
+    internal static bool IsVehicleSirenOn(int /* Vehicle */ vehicle)
+    {
+        return Function.Call<bool>(Hash.IS_VEHICLE_SIREN_ON, vehicle);
+    }
+
     internal static void SetVehicleBombCount(int /* Vehicle */ aircraft, int bombCount)
     {
         Function.Call(Hash._SET_VEHICLE_BOMB_COUNT, aircraft, bombCount);
@@ -64,9 +74,19 @@ internal static partial class Natives
         Function.Call(Hash._SET_VEHICLE_CONTROLS_INVERTED, vehicle, state);
     }
 
+    internal static void SetVehicleHasMutedSirens(int /* Vehicle */ vehicle, bool toggle)
+    {
+        Function.Call(Hash.SET_VEHICLE_HAS_MUTED_SIRENS, vehicle, toggle);
+    }
+
     internal static void SetVehicleRadioLoud(int /* Vehicle */ vehicle, bool toggle)
     {
         Function.Call(Hash.SET_VEHICLE_RADIO_LOUD, vehicle, toggle);
+    }
+
+    internal static void SetVehicleSiren(int /* Vehicle */ vehicle, bool toggle)
+    {
+        Function.Call(Hash.SET_VEHICLE_SIREN, vehicle, toggle);
     }
 
     internal static void SetVehicleWheelsDealDamage(int /* Vehicle */ vehicle, bool toggle)

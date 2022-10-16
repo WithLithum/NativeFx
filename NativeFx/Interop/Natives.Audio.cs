@@ -4,6 +4,11 @@ using GTA.Native;
 
 internal static partial class Natives
 {
+    internal static void BlipSiren(int /* Vehicle */ vehicle)
+    {
+        Function.Call(Hash.BLIP_SIREN, vehicle);
+    }
+
     internal static void StopPedRingtone(int /* Ped */ ped)
     {
         Function.Call(Hash.STOP_PED_RINGTONE, ped);
