@@ -3,6 +3,7 @@
 using GTA;
 using GTA.Native;
 using NativeFx.Entities.Peds;
+using NativeFx.Entities.Peds.Appearance;
 using NativeFx.Interop;
 
 /// <summary>
@@ -16,6 +17,20 @@ public class XPed : XEntityWrapper<Ped>
     /// <param name="x">The class to wrap.</param>
     public XPed(Ped x) : base(x)
     {
+        HeadOverlays = new HeadOverlays(this);
+    }
+
+    /// <summary>
+    /// Gets or sets the armour value of this instance.
+    /// </summary>
+    /// <remarks>
+    /// Armour values will absorb damages if the damage was caused by collision from or with vehicles, or 
+    /// by a firearm.
+    /// </remarks>
+    public int Armour
+    {
+        get => Natives.GetPedArmour(Handle);
+        set => Natives.SetPedArmour(Handle, value);
     }
 
     /// <summary>
@@ -76,6 +91,8 @@ public class XPed : XEntityWrapper<Ped>
         get => Natives.GetPedMoney(Handle);
         set => Natives.SetPedMoney(Handle, value);
     }
+
+    public HeadOverlays HeadOverlays { get; }
 
     /// <summary>
     /// Determines whether this instance can speak the specified speech.
@@ -155,6 +172,17 @@ public class XPed : XEntityWrapper<Ped>
     public bool IsOnAnyVehicle()
     {
         return Natives.IsPedOnVehicle(Handle);
+    }
+
+    /// <summary>
+    /// Sets the head blend data of this instance.
+    /// </summary>
+    /// <param name="blend">The head blend data to set to.</param>
+    public void SetHeadBlend(HeadBlend blend)
+    {
+        Natives.SetPedHeadBlendData(Handle, blend.FirstShape, blend.SecondShape, blend.ExtraShape,
+            blend.FirstTone, blend.SecondTone, blend.ExtraTone,
+            blend.ShapeMix, blend.ToneMix, blend.ExtraMix, blend.IsParent);
     }
 
     /// <summary>
