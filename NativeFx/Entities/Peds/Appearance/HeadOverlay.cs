@@ -1,4 +1,9 @@
-﻿namespace NativeFx.Entities.Peds.Appearance;
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+namespace NativeFx.Entities.Peds.Appearance;
 
 /// <summary>
 /// An enumeration of all possible head overlay types.

@@ -1,10 +1,9 @@
-﻿namespace NativeFx.Entities.Peds.Appearance;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+namespace NativeFx.Entities.Peds.Appearance;
 /// <summary>
 /// Represents the head blend data of a character instance.
 /// </summary>

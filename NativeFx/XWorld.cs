@@ -1,7 +1,12 @@
-﻿namespace NativeFx;
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+namespace NativeFx;
 
 using GTA.Math;
-using GTA.Native;
 using NativeFx.Interop;
 
 /// <summary>

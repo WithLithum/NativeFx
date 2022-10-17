@@ -1,4 +1,9 @@
-﻿namespace NativeFx;
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+namespace NativeFx;
 /// <summary>
 /// Represents an object that represents an instance in the game engine via a handle provided
 /// by the game engine.

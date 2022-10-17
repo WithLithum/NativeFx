@@ -1,4 +1,9 @@
-﻿namespace NativeFx.Entities.Peds;
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+namespace NativeFx.Entities.Peds;
 /// <summary>
 /// An enumeration of all variation slots.
 /// </summary>

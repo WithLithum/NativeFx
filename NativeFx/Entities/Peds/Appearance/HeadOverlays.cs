@@ -1,12 +1,11 @@
-﻿namespace NativeFx.Entities.Peds.Appearance;
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+namespace NativeFx.Entities.Peds.Appearance;
 
 using NativeFx.Interop;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public class HeadOverlays
 {

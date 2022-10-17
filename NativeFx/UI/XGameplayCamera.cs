@@ -1,4 +1,9 @@
-﻿namespace NativeFx.UI;
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+namespace NativeFx.UI;
 
 using NativeFx.Interop;
 
