@@ -3,8 +3,6 @@ Upstream-Name: NativeFx
 Upstream-Contact: WithLithum <WithLithum@foxmail.com>
 Source: https://github.com/WithLithum/NativeFx/
 
-# Sample paragraph, commented out:
-#
-# Files: src/*
-# Copyright: $YEAR $NAME <$CONTACT>
-# License: ...
+Files: NativeFx/*
+Copyright: $YEAR $NAME <$CONTACT>
+License: Apache-2.0
