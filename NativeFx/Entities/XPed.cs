@@ -69,6 +69,15 @@ public class XPed : XEntityWrapper<Ped>
     }
 
     /// <summary>
+    /// Gets or sets the money dropped by this instance when it dies.
+    /// </summary>
+    public int Money
+    {
+        get => Natives.GetPedMoney(Handle);
+        set => Natives.SetPedMoney(Handle, value);
+    }
+
+    /// <summary>
     /// Determines whether this instance can speak the specified speech.
     /// </summary>
     /// <param name="speech">The speech to check.</param>
