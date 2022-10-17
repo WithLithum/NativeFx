@@ -26,8 +26,8 @@ public static class XGame
     /// </remarks>
     public static int NativeTimerA
     {
-        get => Natives.TimerA();
-        set => Natives.SetTimerA(value);
+        get => Natives.Timera();
+        set => Natives.Settimera(value);
     }
 
     /// <summary>
@@ -43,8 +43,8 @@ public static class XGame
     /// </remarks>
     public static int NativeTimerB
     {
-        get => Natives.TimerB();
-        set => Natives.SetTimerB(value);
+        get => Natives.Timerb();
+        set => Natives.Settimerb(value);
     }
 
     /// <summary>

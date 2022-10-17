@@ -75,7 +75,7 @@ public class XPed : XEntityWrapper<Ped>
     /// <returns><see langword="true"/> if this instance can speak the specified speech; otherwise, <see langword="false"/>.</returns>
     public bool CanSpeak(string speech)
     {
-        return Natives.CanPedSpeak(x.Handle, speech, false);
+        return Natives.DoesContextExistForThisPed(x.Handle, speech, false);
     }
 
     /// <summary>

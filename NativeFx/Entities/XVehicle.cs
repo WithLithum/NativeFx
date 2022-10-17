@@ -47,8 +47,8 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// </value>
     public int BombCount
     {
-        get => Natives.GetVehicleBombCount(Handle);
-        set => Natives.SetVehicleBombCount(Handle, value);
+        get => Natives.GetVehicleBombAmmo(Handle);
+        set => Natives.SetVehicleBombAmmo(Handle, value);
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// </summary>
     public bool IsRadioLoud
     {
-        get => Natives.IsVehicleRadioLoud(Handle);
+        get => Natives.CanVehicleReceiveCbRadio(Handle);
         set => Natives.SetVehicleRadioLoud(Handle, value);
     }
 
@@ -150,7 +150,7 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// <param name="toggle">If <see langword="true"/>, the controls of this vehicle is inverted.</param>
     public void SetControlsInverted(bool toggle)
     {
-        Natives.SetVehicleControlsInverted(x.Handle, toggle);
+        Natives.SetInvertVehicleControls(x.Handle, toggle);
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// <returns><see langword="true"/> if wings are intact; otherwise, <see langword="false"/>.</returns>
     public bool AreWingsIntact()
     {
-        return Natives.ArePlaneWingsIntact(Handle);
+        return Natives.AreWingsOfPlaneIntact(Handle);
     }
 
     /// <summary>
@@ -189,7 +189,7 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// <param name="toggle">If <see langword="true"/>, deals damage.</param>
     public void SetWheelsDealDamage(bool toggle)
     {
-        Natives.SetVehicleWheelsDealDamage(Handle, toggle);
+        Natives.SetIncreaseWheelCrushDamage(Handle, toggle);
     }
 
     /// <summary>
@@ -198,6 +198,6 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// </summary>
     public void TriggerSiren()
     {
-        Natives.TriggerSiren(Handle);
+        Natives.TriggerSirenAudio(Handle);
     }
 }

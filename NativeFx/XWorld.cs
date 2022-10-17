@@ -74,7 +74,7 @@ public static class XWorld
     public static void DisableArtificalLights(bool disable, bool affectVehicles)
     {
         Natives.SetArtificialLightsState(disable);
-        Natives.SetArtificialLightsStateAffectsVehicles(affectVehicles);
+        Natives.SetArtificialVehicleLightsState(affectVehicles);
     }
 
     public static bool TryGetGroundLevel(Vector3 vector, out float result, bool ignoreWater = true)
@@ -84,7 +84,7 @@ public static class XWorld
 
         unsafe
         {
-            success = Natives.GetGroundZFor_3dCoord(vector.X, vector.Y, vector.Z, ref x, ignoreWater);
+            success = Natives.GetGroundZFor3dCoord(vector.X, vector.Y, vector.Z, ref x, ignoreWater, false);
         }
 
         result = x;
@@ -100,7 +100,7 @@ public static class XWorld
     /// </remarks>
     public static void SummonLightning()
     {
-        Function.Call(Hash.FORCE_LIGHTNING_FLASH);
+        Natives.ForceLightningFlash();
     }
 
     /// <summary>
@@ -128,7 +128,7 @@ public static class XWorld
 
     public static void SetSnowLevel(float level)
     {
-        Natives.SetSnowLevel(level);
+        Natives.SetSnow(level);
     }
 
     /// <summary>
@@ -137,6 +137,6 @@ public static class XWorld
     /// <param name="intensity">The intensity. At <c>1.0f</c>, the water is calm; at <c>3.0f</c>, the water is extremely intensified.</param>
     public static void OverrideWaterStrength(float intensity)
     {
-        Function.Call(Hash.WATER_OVERRIDE_SET_STRENGTH, intensity);
+        Natives.WaterOverrideSetStrength(intensity);
     }
 }
