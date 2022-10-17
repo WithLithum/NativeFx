@@ -80,6 +80,28 @@ public class XVehicle : XEntityWrapper<Vehicle>
     public void PlaceOnGround() => x.PlaceOnGround();
 
     /// <summary>
+    /// Gets or sets the engine health of this instance.
+    /// </summary>
+    /// <value>
+    /// The engine health of this instance.
+    /// </value>
+    /// <remarks>
+    /// Vehicle engine health ranges (inclusive) and their effects are laid out as below:
+    /// <list type="bullet">
+    ///     <item><b>1000 to 651</b>: The engine is in perfect condition.</item>
+    ///     <item><b>650 to 301</b>: The engine is damaged but can be used as normal.</item>
+    ///     <item><b>300 to 1</b>: The engine is severely damaged and the functionality of the engine is severely impaired. Severe visual smoke is visible.</item>
+    ///     <item><b>0 to -3999</b>: The engine catches fire and the health will rapidly decrease at this point until it explodes.</item>
+    ///     <item><b>-4000</b>: The engine is destroyed.</item>
+    /// </list>
+    /// </remarks>
+    public float EngineHealth
+    {
+        get => Natives.GetVehicleEngineHealth(Handle);
+        set => Natives.SetVehicleEngineHealth(Handle, value);
+    }
+
+    /// <summary>
     /// Gets the maximum acceleration value of this instance.
     /// </summary>
     public float MaxAcceleration => Natives.GetVehicleAcceleration(Handle);
@@ -150,7 +172,7 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// <param name="toggle">If <see langword="true"/>, the controls of this vehicle is inverted.</param>
     public void SetControlsInverted(bool toggle)
     {
-        Natives.SetInvertVehicleControls(x.Handle, toggle);
+        Natives.SetInvertVehicleControls(Handle, toggle);
     }
 
     /// <summary>
@@ -169,7 +191,15 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// <param name="toggle">If <see langword="true"/>, plays stall warning.</param>
     public void PlayStallWarning(bool toggle)
     {
-        Function.Call(Hash.ENABLE_STALL_WARNING_SOUNDS, x, toggle);
+        Natives.EnableStallWarningSounds(Handle, toggle);
+    }
+
+    /// <summary>
+    /// Repairs this instance. If the engine is destroyed, this instance will not be able to repair it.
+    /// </summary>
+    public void Repair()
+    {
+        Natives.SetVehicleFixed(Handle);
     }
 
     /// <summary>
