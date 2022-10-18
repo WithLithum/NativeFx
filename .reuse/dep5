@@ -3,6 +3,6 @@ Upstream-Name: NativeFx
 Upstream-Contact: WithLithum <WithLithum@foxmail.com>
 Source: https://github.com/WithLithum/NativeFx/
 
-Files: NativeFx/*
-Copyright: $YEAR $NAME <$CONTACT>
+Files: NativeFx/Interop/*
+Copyright: 2022 WithLithum <withlithum@foxmail.com>
 License: Apache-2.0
