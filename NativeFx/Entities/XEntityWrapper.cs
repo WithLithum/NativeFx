@@ -8,6 +8,7 @@ namespace NativeFx.Entities;
 using GTA;
 using GTA.Math;
 using NativeFx.Interop;
+using System;
 
 /// <summary>
 /// Provides a wrapper for an entity.
@@ -36,12 +37,14 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
     /// Gets or sets the health of this instance.
     /// </summary>
     /// <value>
-    /// The health of this instance.
+    /// The health of this instance. This instance is considered 'dead' if the health of this
+    /// instance is less than <c>0</c>, unless this instance is a vehicle (which whether it is dead
+    /// is determined by various other health values).
     /// </value>
     public int Health
     {
-        get => x.Health;
-        set => x.Health = value;
+        get => Natives.GetEntityHealth(Handle);
+        set => Natives.SetEntityHealth(Handle, value, 0);
     }
 
     /// <summary>
@@ -59,7 +62,7 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
     /// <summary>
     /// Gets a value indicating whether this instance is dead.
     /// </summary>
-    public bool IsDead => Natives.IsEntityDead(Handle);
+    public virtual bool IsDead => Natives.IsEntityDead(Handle, false);
 
     /// <summary>
     /// Gets a value indicating whether this instance is alive.
@@ -71,11 +74,34 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
     /// </summary>
     public bool IsOnFire => Natives.IsEntityOnFire(Handle);
 
+    /// <summary>
     /// <inheritdoc />
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc />
+    /// <para>
+    /// In GTA IV, it is also known as "required for mission".
+    /// </para>
+    /// </remarks>
     public bool IsPersistent
     {
         get => x.IsPersistent;
-        set => x.IsPersistent = value;
+        set
+        {
+            if (value)
+            {
+                this.MakePersistent();
+            }
+            else
+            {
+                this.Dismiss();
+            }
+        }
+    }
+
+    private void MakePersistent()
+    {
+        Natives.SetEntityAsMissionEntity(Handle, false, false);
     }
 
     /// <summary>
@@ -147,7 +173,8 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
     /// <inheritdoc />
     public void Dismiss()
     {
-        x.MarkAsNoLongerNeeded();
+        var x = Handle;
+        Natives.SetEntityAsNoLongerNeeded(ref x);
     }
 
     /// <summary>
