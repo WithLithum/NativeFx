@@ -194,4 +194,14 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
     {
         Natives.FreezeEntityPosition(Handle, freeze);
     }
+
+    public void Teleport(Vector3 position, bool clearArea, bool invertX = false, bool invertY = false, bool invertZ = false)
+    {
+        Natives.SetEntityCoords(Handle, position.X, position.Y, position.Z, invertX, invertY, invertZ, clearArea);
+    }
+
+    public void TeleportNoOffset(Vector3 position, bool invertX = false, bool invertY = false, bool invertZ = false)
+    {
+        Natives.SetEntityCoordsNoOffset(Handle, position.X, position.Y, position.Z, invertX, invertY, invertZ);
+    }
 }
