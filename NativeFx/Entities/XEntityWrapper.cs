@@ -99,7 +99,7 @@ public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPer
         }
     }
 
-    private void MakePersistent()
+    public void MakePersistent()
     {
         Natives.SetEntityAsMissionEntity(Handle, false, false);
     }
