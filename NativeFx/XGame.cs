@@ -7,6 +7,8 @@ namespace NativeFx;
 
 using GTA.Native;
 using NativeFx.Interop;
+using NativeFx.UI.Text;
+using System;
 
 /// <summary>
 /// Provides methods and properties to manipulate the game and the game engine.
@@ -108,6 +110,62 @@ public static class XGame
     public static void DisableAutomaticRespawn(bool toggle)
     {
         Natives.PauseDeathArrestRestart(toggle);
+    }
+
+    /// <summary>
+    /// Displays a subtitle text at the bottom of the screen.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The subtitles are used to indicate the player for the current objective in a mission or event, or as simple subtitles.
+    /// </para>
+    /// <note type="note">
+    /// If you need a subtitle to only appear if the player's Display -> Subtitle option is on, add <c>~z~</c> token at the beginning
+    /// of the text.
+    /// </note>
+    /// </remarks>
+    /// <param name="text">The text to draw.</param>
+    /// <param name="duration">The duration to display the subtitle. Defaults to <c>8000</c>.</param>
+    /// <param name="drawImmediately">If <see langword="true"/>, the subtitle will be drawn immediately; otherwise, it will be drawn after the current subtitle being displayed finished displaying.</param>
+    public static void DisplaySubtitle(IText text, int duration = 8000, bool drawImmediately = true)
+    {
+        Natives.BeginTextCommandPrint("STRING");
+        text.Add();
+        Natives.EndTextCommandPrint(duration, drawImmediately);
+    }
+
+    /// <summary>
+    /// Displays a simple notification.
+    /// </summary>
+    /// <param name="text">The text to display.</param>
+    /// <param name="blink">If <see langword="true"/>, the notification will blink briefly when being added to the screen.</param>
+    public static void DisplayNotification(IText text, bool blink = false)
+    {
+        Natives.BeginTextCommandThefeedPost("STRING");
+        text.Add();
+        Natives.EndTextCommandThefeedPostTicker(blink, false);
+    }
+
+    /// <summary>
+    /// Displays a simple notification with multiple text components.
+    /// </summary>
+    /// <param name="text">The text components to display.</param>
+    /// <exception cref="ArgumentOutOfRangeException">The <paramref name="text"/> consisted of more than 10 items.</exception>
+    public static void DisplayNotification(params IText[] text)
+    {
+        if (text.Length > 10)
+        {
+            throw new ArgumentOutOfRangeException(nameof(text), "You can only pass up to 10 text strings.");
+        }
+
+        Natives.BeginTextCommandThefeedPost("CEIL_EMAIL_BCON");
+        
+        foreach (var str in text)
+        {
+            str.Add();
+        }
+
+        Natives.EndTextCommandThefeedPostTicker(false, false);
     }
 
     /// <summary>
