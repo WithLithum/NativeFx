@@ -17,7 +17,7 @@ public static class XWorld
     /// <summary>
     /// Gets or sets the intensity of the ocean waves (otherwise known as 'deep ocean scaler').
     /// </summary>
-    /// <value>
+    ///<value>
     /// The intensity of the ocean waves. The default value, by most cases, is <c>1.0</c>.
     /// </value>
     public static float OceanWaveIntensity
@@ -144,4 +144,11 @@ public static class XWorld
     {
         Natives.WaterOverrideSetStrength(intensity);
     }
+
+    public static bool IsAnyCopVehicleInArea(Vector3 corner1, Vector3 corner2)
+    {
+        return Natives.IsCopVehicleInArea3d(corner1.X, corner2.X, corner1.Y, corner2.Y, corner1.Z, corner2.Z);
+    }
+
+
 }

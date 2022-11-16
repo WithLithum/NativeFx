@@ -55,6 +55,8 @@ public class XVehicle : XEntityWrapper<Vehicle>
         set => Natives.SetVehicleBombAmmo(Handle, value);
     }
 
+    public void CopyDamageTo(XVehicle target) => Natives.CopyVehicleDamages(Handle, target.Handle);
+
     /// <summary>
     /// Plays a 'blip' sound if this instance has a siren.
     /// </summary>
@@ -108,6 +110,9 @@ public class XVehicle : XEntityWrapper<Vehicle>
     /// <summary>
     /// Gets the maximum acceleration value of this instance.
     /// </summary>
+    /// <remarks>
+    /// The maximum acceleration value of a vehicle is defined in the game vehicled data files for each model.
+    /// </remarks>
     public float MaxAcceleration => Natives.GetVehicleAcceleration(Handle);
 
     /// <summary>
