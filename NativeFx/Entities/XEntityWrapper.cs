@@ -14,7 +14,7 @@ using System;
 /// Provides a wrapper for an entity.
 /// </summary>
 /// <typeparam name="T">The entity to wrap.</typeparam>
-public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPersistable, IFreezable, ISpatial
+public abstract class XEntityWrapper<T> : PoolObjectWrapper<T>, IDeletable, IPersistable, IFreezable, INativeSpatial
     where T : Entity
 {
     /// <summary>

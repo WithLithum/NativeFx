@@ -5,6 +5,7 @@ using NativeFx.Interop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,17 +54,40 @@ public abstract class XEntity : IHandleable, IDeletable, IPersistable, IFreezabl
         }
     }
 
-    /// <inheritdoc />
-    public Vector3 Position
+    public Matrix Matrix
     {
-        get => Natives.GetEntityCoords(Handle, false);
+        get
+        {
+            GTA.Math.Vector3 forward = GTA.Math.Vector3.Zero;
+            GTA.Math.Vector3 up = GTA.Math.Vector3.Zero;
+            GTA.Math.Vector3 right = GTA.Math.Vector3.Zero;
+            GTA.Math.Vector3 pos = GTA.Math.Vector3.Zero;
+
+            Natives.GetEntityMatrix(Handle, ref forward, ref right, ref up, ref pos);
+
+            return new Matrix(forward.X, forward.Y, forward.Z, right.X, right.Y, right.Z, up.X, up.Y, up.Z, pos.X, pos.Y, pos.Z);
+        }
+    }
+
+    /// <inheritdoc />
+    public System.Numerics.Vector3 Position
+    {
+        get
+        {
+            var x = Natives.GetEntityCoords(Handle, false);
+            return new System.Numerics.Vector3(x.X, x.Y, x.Z);
+        }
         set => Natives.SetEntityCoords(Handle, value.X, value.Y, value.Z, false, false, false, false);
     }
 
     /// <inheritdoc />
-    public Vector3 Rotation
+    public System.Numerics.Vector3 Rotation
     {
-        get => Natives.GetEntityRotation(Handle, 2);
+        get
+        {
+            var x = Natives.GetEntityRotation(Handle, 2);
+            return new System.Numerics.Vector3(x.X, x.Y, x.Z);
+        }
         set => Natives.SetEntityRotation(Handle, value.X, value.Y, value.Z, 2, true);
     }
 
@@ -75,12 +99,87 @@ public abstract class XEntity : IHandleable, IDeletable, IPersistable, IFreezabl
     }
 
     /// <summary>
-    /// Gets or sets the hit points (HP, otherwise known as Health) remaining for this instance.
+    /// Gets or sets the velocity of this instance.
+    /// </summary>
+    public System.Numerics.Vector3 Velocity
+    {
+        get
+        {
+            var x = Natives.GetEntityVelocity(Handle);
+            return new System.Numerics.Vector3(x.X, x.Y, x.Z);
+        }
+        set => Natives.SetEntityVelocity(Handle, value.X, value.Y, value.Z);
+    }
+
+    /// <summary>
+    /// Gets the rotation velocity of this instance.
+    /// </summary>
+    public System.Numerics.Vector3 RotationVelocity
+    {
+        get
+        {
+            var x = Natives.GetEntityRotationVelocity(Handle);
+            return new System.Numerics.Vector3(x.X, x.Y, x.Z);
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the health value remaining for this instance.
     /// </summary>
     public int Health
     {
         get => Natives.GetEntityHealth(Handle);
         set => Natives.SetEntityHealth(Handle, value, 0);
+    }
+
+    /// <summary>
+    /// Gets or sets the maximum health value of this instance.
+    /// </summary>
+    public int MaxHealth
+    {
+        get => Natives.GetEntityMaxHealth(Handle);
+        set => Natives.SetEntityMaxHealth(Handle, value);
+    }
+
+    /// <summary>
+    /// Gets the speed of this instance in metres per second.
+    /// </summary>
+    public float Speed
+    {
+        get => Natives.GetEntitySpeed(Handle);
+    }
+
+    /// <summary>
+    /// Gets how deep this instance is submerged into water.
+    /// </summary>
+    /// <value>
+    /// A float indicating how deep this instance is submerged into water. Value <c>1.0f</c> means this instance is fully submerged.
+    /// </value>
+    public float SubmersionLevel
+    {
+        get => Natives.GetEntitySubmergedLevel(Handle);
+    }
+
+    /// <summary>
+    /// Gets or sets the quarternion of this instance.
+    /// </summary>
+    public System.Numerics.Quaternion Quaternion
+    {
+        get
+        {
+            float x = 0;
+            float y = 0;
+            float z = 0;
+            float w = 0;
+
+            Natives.GetEntityQuaternion(Handle, ref x, ref y, ref z, ref w);
+
+            return new System.Numerics.Quaternion(x, y, z, w);
+        }
+        set
+        {
+            Natives.SetEntityQuaternion(Handle, value.X, value.Y, value.Z, value.W);
+        }
     }
 
     /// <inheritdoc />
@@ -114,5 +213,14 @@ public abstract class XEntity : IHandleable, IDeletable, IPersistable, IFreezabl
     public void Freeze(bool freeze)
     {
         Natives.FreezeEntityPosition(Handle, freeze);
+    }
+
+    /// <summary>
+    /// Toggles whether this instance can only be damaged by the player.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, this instance can only be damaged by player; otherwise, <see langword="false"/>.</param>
+    public void SetOnlyDamagedByPlayer(bool toggle)
+    {
+        Natives.SetEntityOnlyDamagedByPlayer(Handle, toggle);
     }
 }
