@@ -65,7 +65,7 @@ public abstract class XEntity : IHandleable, IDeletable, IPersistable, IFreezabl
 
             Natives.GetEntityMatrix(Handle, ref forward, ref right, ref up, ref pos);
 
-            return new Matrix(forward.X, forward.Y, forward.Z, right.X, right.Y, right.Z, up.X, up.Y, up.Z, pos.X, pos.Y, pos.Z);
+            return new Matrix(new float[] { forward.X, forward.Y, forward.Z, right.X, right.Y, right.Z, up.X, up.Y, up.Z, pos.X, pos.Y, pos.Z });
         }
     }
 
