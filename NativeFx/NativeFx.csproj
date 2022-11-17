@@ -43,7 +43,6 @@ SPDX-License-Identifier: Apache-2.0
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Blips\" />
     <Folder Include="Interop\" />
   </ItemGroup>
 

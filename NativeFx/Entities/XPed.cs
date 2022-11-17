@@ -98,6 +98,21 @@ public class XPed : XEntityWrapper<Ped>
         set => Natives.SetPedMoney(Handle, value);
     }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this instance would drown in water.
+    /// </summary>
+    /// <remarks>
+    /// <note type="warning">
+    /// This property does not apply to players.
+    /// </note>
+    /// Peds in the game world automatically dies in open water after some time.
+    /// </remarks>
+    public bool DiesInWater
+    {
+        get => Natives.GetPedDiesInWater(Handle);
+        set => Natives.SetPedDiesInWater(Handle, value);
+    }
+
     public HeadOverlays HeadOverlays { get; }
 
     /// <summary>
