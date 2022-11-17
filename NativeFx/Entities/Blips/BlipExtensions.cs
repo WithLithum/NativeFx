@@ -1,4 +1,10 @@
-﻿namespace NativeFx.Entities.Blips;
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+namespace NativeFx.Entities.Blips;
 
 using GTA;
 using NativeFx.Interop;

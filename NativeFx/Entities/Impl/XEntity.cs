@@ -1,4 +1,10 @@
-﻿namespace NativeFx.Entities.Impl;
+﻿/*
+ * SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+namespace NativeFx.Entities.Impl;
 
 using GTA.Math;
 using NativeFx.Interop;
