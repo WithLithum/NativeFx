@@ -104,21 +104,6 @@ public abstract class XEntity : IHandleable, IDeletable, IPersistable, IFreezabl
         }
     }
 
-    public Matrix Matrix
-    {
-        get
-        {
-            GTA.Math.Vector3 forward = GTA.Math.Vector3.Zero;
-            GTA.Math.Vector3 up = GTA.Math.Vector3.Zero;
-            GTA.Math.Vector3 right = GTA.Math.Vector3.Zero;
-            GTA.Math.Vector3 pos = GTA.Math.Vector3.Zero;
-
-            Natives.GetEntityMatrix(Handle, ref forward, ref right, ref up, ref pos);
-
-            return new Matrix(new float[] { forward.X, forward.Y, forward.Z, right.X, right.Y, right.Z, up.X, up.Y, up.Z, pos.X, pos.Y, pos.Z });
-        }
-    }
-
     /// <summary>
     /// Gets the physical heading of this instance in degrees.
     /// </summary>
