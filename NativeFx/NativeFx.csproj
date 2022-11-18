@@ -38,7 +38,7 @@ SPDX-License-Identifier: Apache-2.0
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NativeFx.Interop" Version="0.1.1" />
+    <PackageReference Include="NativeFx.Interop" Version="0.1.2" />
     <PackageReference Include="ScriptHookVDotNet3" Version="3.5.1" />
   </ItemGroup>
 
