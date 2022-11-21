@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NativeFx.Interop" Version="0.1.3" />
+    <PackageReference Include="ScriptHookVDotNet3" Version="3.5.1" />
+  </ItemGroup>
+
+</Project>

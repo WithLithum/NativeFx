@@ -1,8 +1,6 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-# SPDX-FileCopyrightText: 2022 WithLithum <withlithum@foxmail.com>
-#
-# SPDX-License-Identifier: Apache-2.0
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NativeFx", "NativeFx\NativeFx.csproj", "{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}"
@@ -17,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NativeFx.sln.vsspell = NativeFx.sln.vsspell
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Division", "Division", "{1C5B9A01-A4A2-4125-8644-0E83474C0CD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeFx.UI", "NativeFx.UI\NativeFx.UI.csproj", "{8859F67B-4AB8-45BD-AC28-107A4E4C05D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +29,16 @@ Global
 		{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B3D3D6E-0AE7-480C-99B3-6FD3056E1B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8859F67B-4AB8-45BD-AC28-107A4E4C05D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8859F67B-4AB8-45BD-AC28-107A4E4C05D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8859F67B-4AB8-45BD-AC28-107A4E4C05D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8859F67B-4AB8-45BD-AC28-107A4E4C05D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8859F67B-4AB8-45BD-AC28-107A4E4C05D3} = {1C5B9A01-A4A2-4125-8644-0E83474C0CD0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {24DFFFDE-4374-4FFA-B158-DEE13B38DB6E}
