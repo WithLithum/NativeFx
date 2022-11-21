@@ -254,6 +254,18 @@ public abstract class XEntity : IHandleable, IDeletable, IPersistable, IFreezabl
         return Handle;
     }
 
+    /// <summary>
+    /// Determines whether this instance is currently attaching to or attached to any other entity.
+    /// </summary>
+    /// <remarks>
+    /// Please note that this instance might still return <see langword="false"/> even if any other entity is attached to this instance rather than this instance attached to any instance.
+    /// </remarks>
+    /// <returns><see langword="true"/> if this instance is currently attaching or attached to any other entity.</returns>
+    public bool IsAttached()
+    {
+        return Natives.IsEntityAttached(ValidHandleOrException());
+    }
+
     public bool IsAttachedTo(XEntity other)
     {
         if (other == null) throw new ArgumentNullException(nameof(other));
@@ -289,6 +301,16 @@ public abstract class XEntity : IHandleable, IDeletable, IPersistable, IFreezabl
         Handle = x;
     }
 
+    /// <summary>
+    /// Immediately detaches this instance from whatever this instance is attaching or attached to.
+    /// </summary>
+    /// <param name="dynamic">Whether to set this instance as dynamic after detaching.</param>
+    /// <param name="prohibitCollision">Whether to prohibit collision until this instance and whatever is detached from is 4 metres away for the first time.</param>
+    public void Detach(bool dynamic = true, bool prohibitCollision = true)
+    {
+        Natives.DetachEntity(ValidHandleOrException(), dynamic, prohibitCollision);
+    }
+
     /// <inheritdoc />
     public void Dismiss()
     {
@@ -307,12 +329,26 @@ public abstract class XEntity : IHandleable, IDeletable, IPersistable, IFreezabl
     public void SetAnimationSpeed(string animDict, string anim, float multiplier) =>
         Natives.SetEntityAnimSpeed(Handle, animDict, anim, multiplier);
 
+    /// <summary>
+    /// Stops the specified animation.
+    /// </summary>
+    /// <param name="animDict">The dictionary.</param>
+    /// <param name="anim">The name of the animation.</param>
     public void StopAnimation(string animDict, string anim) => Natives.StopEntityAnim(ValidHandleOrException(), anim, animDict, 1f);
 
     /// <inheritdoc />
     public void Freeze(bool freeze)
     {
         Natives.FreezeEntityPosition(Handle, freeze);
+    }
+
+    /// <summary>
+    /// Toggles whether this instance is considered dynamic by the physics engine.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, this instance is dynamic.</param>
+    public void SetDynamic(bool toggle)
+    {
+        Natives.SetEntityDynamic(Handle, toggle);
     }
 
     /// <summary>
