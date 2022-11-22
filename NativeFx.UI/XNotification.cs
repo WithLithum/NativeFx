@@ -18,7 +18,7 @@ public static class XNotification
     /// This method must be called before each notification showing call to set background colour.
     /// </remarks>
     /// <param name="hudColour">The ID of the HUD colour. This ID is the zero-based index of the colour in <c>hudcolor.dat</c>.</param>
-    internal static void SetNextBackgroundColour(int hudColour)
+    public static void SetNextBackgroundColour(int hudColour)
     {
         Natives.ThefeedSetBackgroundColorForNextPost(hudColour);
     }
