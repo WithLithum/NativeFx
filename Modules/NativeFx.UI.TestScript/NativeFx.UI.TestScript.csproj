@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NativeFx.Interop" Version="0.1.3" />
+    <PackageReference Include="LemonUI.SHVDN3" Version="1.9.1" />
     <PackageReference Include="ScriptHookVDotNet3" Version="3.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NativeFx.UI\NativeFx.UI.csproj" />
   </ItemGroup>
 
 </Project>
