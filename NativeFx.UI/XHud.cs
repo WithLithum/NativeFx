@@ -9,12 +9,14 @@ namespace NativeFx.UI;
 using GTA;
 using GTA.Math;
 using GTA.UI;
+using System;
 using System.Drawing;
 
 public static class XHud
 {
     private static Blip _mainBlip;
 
+    [Obsolete("This property does nothing.")]
     public static bool FakeSpectatorMode
     {
         get => Natives.GetFakeSpectatorMode();
