@@ -176,4 +176,13 @@ public static class XHud
     {
         Natives.SetMinimapHideFow(toggle);
     }
+
+    /// <summary>
+    /// Toggles whether to flash the wanted star displayer.
+    /// </summary>
+    /// <param name="toggle">If <see langword="true"/>, flash the wanted star displayer.</param>
+    public static void ToggleWantedDisplayFlashes(bool toggle)
+    {
+        Natives.FlashWantedDisplay(toggle);
+    }
 }
