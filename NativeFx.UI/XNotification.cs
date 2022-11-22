@@ -61,7 +61,10 @@ public static class XNotification
     /// <returns>The ID of the notification created.</returns>
     public static int Show(Texture texture, string title, string subtitle, string text, bool blink = false)
     {
+        texture.LoadAndWait();
         BeginCommand(text);
-        return Natives.EndTextCommandThefeedPostMessagetext(texture.Dictionary, texture.Name, blink, 0, title, subtitle);
+        var n = Natives.EndTextCommandThefeedPostMessagetext(texture.Dictionary, texture.Name, blink, 0, title, subtitle);
+        texture.Dismiss();
+        return n;
     }
 }

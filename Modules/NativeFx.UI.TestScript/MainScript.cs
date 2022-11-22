@@ -35,18 +35,16 @@ public class MainScript : Script
     {
         _pool.Process();
 
+        if (_interval != 0)
+        {
+            _interval--;
+        }
+
         Game.DisableControlThisFrame(Control.InteractionMenu);
         if (Game.IsControlJustPressed(Control.InteractionMenu))
         {
-            if (_interval != 0)
-            {
-                _interval--;
-            }
-            else
-            {
-                _menu.Visible = !_menu.Visible;
-                _interval = 35;
-            }
+            _menu.Visible = !_menu.Visible;
+            _interval = 35;
         }
     }
 
@@ -59,7 +57,7 @@ public class MainScript : Script
     {
         if (_itemBlinkNotify.Checked)
         {
-            XNotification.SetNextBackgroundColour(3);
+            XNotification.SetNextBackgroundColour(6);
         }
     }
 
