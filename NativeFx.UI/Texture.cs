@@ -8,8 +8,22 @@ namespace NativeFx.UI;
 
 using GTA;
 
+/// <summary>
+/// Represents a texture inside a texture dictionary that supports script access.
+/// </summary>
+/// <remarks>
+/// <para>
+/// Only select texture dictionaries in the game are accessible via scripts, most of these are either in
+/// client scaleform <c>rpf</c>s or in <c>script_txds.rpf</c>.
+/// </para>
+/// </remarks>
 public class Texture
 {
+    /// <summary>
+    /// Initialises a new instance of the <see cref="Texture"/> class.
+    /// </summary>
+    /// <param name="dictionary">The dictionary.</param>
+    /// <param name="name">The name of the texture.</param>
     public Texture(string dictionary, string name)
     {
         Dictionary = dictionary;
@@ -27,13 +41,29 @@ public class Texture
     public string Name { get; }
 
     /// <summary>
+    /// Gets a value indicating whether this instance is loaded.
+    /// </summary>
+    public bool IsLoaded => Natives.HasStreamedTextureDictLoaded(Dictionary);
+
+    /// <summary>
     /// Loads the dictionary of this instance.
     /// </summary>
     public void Load()
     {
-        if (!Natives.HasStreamedTextureDictLoaded(Dictionary))
+        if (!IsLoaded)
         {
             Natives.RequestStreamedTextureDict(Dictionary, true);
+        }
+    }
+
+    /// <summary>
+    /// Dismisses this instance.
+    /// </summary>
+    public void Dismiss()
+    {
+        if (IsLoaded)
+        {
+            Natives.SetStreamedTextureDictAsNoLongerNeeded(Dictionary);
         }
     }
 
@@ -50,7 +80,7 @@ public class Texture
     {
         Load();
 
-        while (!Natives.HasStreamedTextureDictLoaded(Dictionary))
+        while (!IsLoaded)
         {
             Script.Yield();
         }

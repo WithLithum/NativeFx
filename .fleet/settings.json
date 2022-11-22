@@ -1,0 +1,8 @@
+{
+    "excluded": [
+        ".reuse",
+        ".github",
+        ".vs",
+        "LICENSES"
+    ]
+}
