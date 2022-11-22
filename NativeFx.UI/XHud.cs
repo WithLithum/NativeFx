@@ -128,6 +128,35 @@ public static class XHud
     public static void SetComponentPosition(HudComponent component, float x, float y) =>
         Natives.SetHudComponentPosition((int)component, x, y);
 
+    /// <summary>
+    /// Toggles whether the ability bar is visible.
+    /// </summary>
+    /// <remarks>
+    /// This method only hides the ability bar below the radar, and does not affect whether or not the
+    /// special ability is available or usable. If <see cref="ToggleAllowAbilityBar(bool)"/> toggled to <see langword="false"/>,
+    /// the ability bar will be forcefully hidden and this function will not do anything until <see cref="ToggleAllowAbilityBar(bool)"/>
+    /// is toggled back to <see langword="true"/>.
+    /// </remarks>
+    /// <param name="toggle">If <see langword="true"/>, the ability bar is visible.</param>
+    public static void ToggleAbilityBar(bool toggle)
+    {
+        Natives.SetAbilityBarVisibility(toggle);
+    }
+
+    /// <summary>
+    /// Toggles whether the ability bar is allowed.
+    /// </summary>
+    /// <remarks>
+    /// This method only controls whether or not the ability bar below the radar is allowed to be visible, rather than if special ability
+    /// is avaliable or able to be used. If toggled to <see langword="false"/>, the ability bar will be forcefully hidden
+    /// and calling <see cref="ToggleAbilityBar(bool)"/> will not work until toggled back to <see langword="true"/>.
+    /// </remarks>
+    /// <param name="toggle">If <see langword="true"/>, the ability bar is allowed.</param>
+    public static void ToggleAllowAbilityBar(bool toggle)
+    {
+        Natives.SetAllowAbilityBar(toggle);
+    }
+
     public static void ToggleBlockWaypoint(bool toggle)
     {
         Natives.SetMinimapBlockWaypoint(toggle);
@@ -137,10 +166,28 @@ public static class XHud
     /// Toggles whether to display GTA Online-styled big map.
     /// </summary>
     /// <param name="bigMap">If <see langword="true"/>, displays the big map.</param>
-    /// <param name="fullMap">If <see langword="true"/>, displays the full map.</param>
+    /// <param name="fullMap">If <see langword="true"/>, displays the full map of San Andreas as if in the Pause Menu.</param>
     public static void ToggleBigMap(bool bigMap, bool fullMap)
     {
         Natives.SetBigmapActive(bigMap, fullMap);
+    }
+
+    /// <summary>
+    /// Toggles whether to set UI to director mode.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This toggle is used by the Rockstar director mode in order to hide certain information from the user
+    /// interface, such as hiding the ability bar and the name of the user.
+    /// </para>
+    /// <para>
+    /// This toggle does not affect special ability itself. Special abilities are still usable if they are available.
+    /// </para>
+    /// </remarks>
+    /// <param name="toggle">If <see langword="true"/>, the name in the pause menu and the ability bar is hidden.</param>
+    public static void ToggleDirectorMode(bool toggle)
+    {
+        Natives.SetPlayerIsInDirectorMode(toggle);
     }
 
     /// <summary>
