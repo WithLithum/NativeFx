@@ -14,4 +14,10 @@
     <Folder Include="Players\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="ScriptHookVDotNet">
+      <HintPath>..\..\References\ScriptHookVDotNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
